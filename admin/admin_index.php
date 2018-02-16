@@ -1,6 +1,6 @@
 <?php
 require_once('phpscripts/config.php');
-  confirm_logged_in();
+  //confirm_logged_in();
 require_once('phpscripts/connect.php');
  ?>
 
@@ -10,7 +10,9 @@ require_once('phpscripts/connect.php');
    <meta charset="UTF-8">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-   <title>Document</title>
+   <link rel="stylesheet" type="text/css" href="css/main.css">
+   <link href="https://fonts.googleapis.com/css?family=Roboto:300" rel="stylesheet">
+   <title>Admin Panel</title>
  </head>
  <body>
 <div class="greeting">
@@ -22,13 +24,13 @@ $currentTime = date('H:i:s');
 $theUser = $_SESSION['user_name'];
 
 if ( $currentTime >= "04:00:00" && $currentTime <= "11:00:00" ) {
-    echo "Morning, {$theUser}! Have you had your daily survival juice yet?" ;
+    echo "<p>Morning, {$theUser}! <br> Have you had your daily survival juice yet?</p>" ;
 } else if ( $currentTime >= "12:00:00" && $currentTime <= "18:00:00" ) {
-    echo "Hey, {$theUser}! It's almost there, stay awake!";
+    echo "<p>Hey, {$theUser}! <br> It's almost there, stay awake!</p>";
 } else if ( $currentTime >= "19:00:00" || $currentTime <= "03:00:00" ) {
-    echo "Good Evening, {$theUser}! Go watch some Schitt's Creek!";
+    echo "<p>Good Evening, {$theUser}! <br> Go watch some Schitt's Creek!</p>";
 }
-?></div>
+?>
 
 <div class="loginTime">
   <?php
@@ -45,6 +47,8 @@ if ( $currentTime >= "04:00:00" && $currentTime <= "11:00:00" ) {
 
 
   ?>
+</div>
+
 </div>
  </body>
  </html>

@@ -12,7 +12,7 @@
       $result = logIn($username, $password, $ip);
       $message = $result;
     }else{
-      $message = "Please fill out the required fields.";
+      $message = "<p>Please fill out the required fields.</p>";
     }
   }
 ?>
@@ -24,19 +24,22 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Admin Panel</title>
+  <link rel="stylesheet" type="text/css" href="css/main.css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:100" rel="stylesheet">
+  <title>Admin Login</title>
 </head>
 <body>
 
-  <?php if(!empty($message)){ echo $message;} ?>
-  <form action="admin_login.php" method="post">
+  <form action="admin_login.php" method="post" class="loginForm">
     <label>Username:</label>
     <input type="text" name="username" value=""></input>
     <br><br>
     <label>Password:</label>
     <input type="password" name="password" value=""></input>
     <br>
-    <input type="submit" name="submit" value="Show me the money"></input>
+    <div class="eroMsg"><?php if(!empty($message)){ echo $message;} ?></div>
+    <br>
+    <input type="submit" name="submit" value="Ready to go!" class="button"></input>
 
   </form>
 </body>
