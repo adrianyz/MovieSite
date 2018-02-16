@@ -11,7 +11,7 @@ function logIn($username, $password, $ip) {
         if($att['att_time'] > 3){
             $message = "Oops, you got trouble.";
             return $message;
-            //lock after 3 tries
+            //lock after 3 tries. reference:http://webcheatsheet.com/php/blocking_system_access.php
         }
         else{
             $username = mysqli_real_escape_string($link, $username);
