@@ -8,4 +8,9 @@
       }
     }
 
+    function logged_out(){
+      session_destroy();//kill all the running sessions
+      redirect_to("../admin_login.php");
+    }
+
  ?>

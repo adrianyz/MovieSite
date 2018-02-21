@@ -14,7 +14,7 @@ body {
   height: 100vh;
 }
 
-.loginForm, .greeting {
+.loginForm, .greeting, .createUser {
   width: 600px;
   margin: auto;
   margin-top: 300px;

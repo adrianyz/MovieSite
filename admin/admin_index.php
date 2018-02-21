@@ -1,5 +1,6 @@
 <?php
 require_once('phpscripts/config.php');
+
   //confirm_logged_in();
 require_once('phpscripts/connect.php');
  ?>
@@ -44,10 +45,12 @@ if ( $currentTime >= "04:00:00" && $currentTime <= "11:00:00" ) {
     $theTime = $founduser['user_date'];
     echo "<p>You were here: " . $theTime. "</p>";
   }
-
-
   ?>
 </div>
+
+<h2><?php echo $_SESSION['user_name']; ?></h2>
+<a href="admin_createuser.php">Create User</a>
+<a href="phpscripts/caller.php?caller_id=logout">Sign Out</a>
 
 </div>
  </body>
