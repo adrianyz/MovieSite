@@ -16,6 +16,7 @@ function logIn($username, $password, $ip) {
         else{
             $username = mysqli_real_escape_string($link, $username);
             $password = mysqli_real_escape_string($link, $password);
+            //unencrypt Password
             $salted = "seasoningadded".$password."abitmore";
             $hashed = hash('haval160,4',$salted);
 
@@ -52,6 +53,7 @@ function logIn($username, $password, $ip) {
     else{
         $username = mysqli_real_escape_string($link, $username);
         $password = mysqli_real_escape_string($link, $password);
+        //unencrypt Password
         $salted = "seasoningadded".$password."abitmore";
         $hashed = hash('haval160,4',$salted);
 

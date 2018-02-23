@@ -19,10 +19,28 @@ body {
   margin: auto;
   margin-top: 300px;
   position: relative;
-  height: 300px;
+  height: 350px;
   background-color: rgba(0, 0, 0, 0.1);
   text-align: center;
   padding-top: 50px;
+}
+
+.createUser {
+  width: 600px;
+  margin: auto;
+  margin-top: 300px;
+  position: relative;
+  height: 450px;
+  background-color: rgba(0, 0, 0, 0.1);
+  text-align: center;
+  padding-top: 50px;
+}
+
+.createUser h2{
+  color: rgba(255, 255, 255, 0.7);
+  font-family: 'Roboto', sans-serif;
+  font-size: 2rem;
+  line-height: 3rem;
 }
 
 label {
@@ -32,6 +50,19 @@ label {
   line-height: 3rem;
   width: 80px;
   margin-right: 20px;
+}
+
+#submitBtn{
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  font-size: 0.8rem;
+}
+
+select{
+  margin-top:20px;
+}
+
+option{
+  color:#6b8b8d;
 }
 
 input {
