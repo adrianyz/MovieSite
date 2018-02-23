@@ -5,12 +5,9 @@ error_reporting(E_ALL);
   //confirm_logged_in();
 //require_once('phpscripts/connect.php');
 
-//generate random passwords
-// function createPw($length = 8){
-//   $chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()_-=+;:,.?";
-//    $password = substr( str_shuffle( $chars ), 0, $length );
-//    return $password;
-// }
+
+
+
 
 if(isset($_POST['submit'])){
   $fname = trim($_POST['fname']);
@@ -50,8 +47,19 @@ if(isset($_POST['submit'])){
         <input type="text" name="fname" value=""><br>
         <label>Username:</label>
         <input type="text" name="username" value=""><br>
-        <label>Paassword:</label>
-        <input type="text" name="password" value=""><br>
+        <label>Generated Paassword:</label>
+        <input type="text" name="password" value="
+<?php
+//generate random passwords
+function createPw($length = 8){
+ $chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()_-=+;:,.?";
+   $password = substr( str_shuffle( $chars ), 0, $length );
+   echo $password;
+}
+createPW();
+
+?>
+        "><br>
         <label>Email:</label>
         <input type="text" name="email" value=""><br>
         <select name="lvllist">

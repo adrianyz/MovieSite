@@ -15,6 +15,12 @@ $hashed = hash('haval160,4',$salted);
   //echo $userstring;
 $userquery = mysqli_query($link, $userstring);
 if($userquery){
+
+  $to      = $email;
+  $subject = "Welcome to the Movie Site!";
+  $content = "Hey" . $fname . "! Welcome aboard! Please log in on http://localhost. Your username is " . $username . " and your default password is " . $password . ". ";
+
+  mail($to, $subject, $content);
   redirect_to('admin_index.php');
 
 }else {
