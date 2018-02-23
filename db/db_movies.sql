@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:8889
--- Generation Time: Feb 22, 2018 at 07:49 PM
+-- Generation Time: Feb 23, 2018 at 11:05 PM
 -- Server version: 5.6.35
 -- PHP Version: 7.1.8
 
@@ -54,7 +54,7 @@ CREATE TABLE `tbl_attempts` (
 --
 
 INSERT INTO `tbl_attempts` (`att_id`, `att_ip`, `att_time`) VALUES
-(2, '::1', 3);
+(3, '::1', 1);
 
 -- --------------------------------------------------------
 
@@ -1049,10 +1049,10 @@ CREATE TABLE `tbl_user` (
 --
 
 INSERT INTO `tbl_user` (`user_id`, `user_fname`, `user_name`, `user_pass`, `user_email`, `user_date`, `user_ip`, `user_level`) VALUES
-(2, 'David', 'Rose', '111', '', '2018-02-21 21:16:23', '::1', ''),
-(15, 'aaa', 'aaa', '5bc2d3cf0bb2e6e09a7c9c09767f88e10111cbb0', 'aaa@sas.com', '2018-02-22 05:56:36', 'no', '2'),
-(16, 'qqq', 'aaa', 'fafeb3e5250b3d7ac1254622395b632c543c0719', 'yzhao333@gmail.com', '2018-02-22 18:43:55', 'no', '2'),
-(17, 'aaa', 'aaa', '0f33e1088ae46d6316f779c3637170d5223f20aa', 'yzhao333@gmail.com', '2018-02-22 18:48:47', 'no', '1');
+(2, 'David', 'Rose', '111', '', '2018-02-22 19:29:31', '::1', ''),
+(24, 'jay', 'jay', '9d1ea3acf26a2e9938e8f144813e8bd3f0ff3c45', 'yzhao333@gmail.com', '2018-02-23 19:22:36', '::1', '2'),
+(25, 'Justin', 'Justin', 'bc9ef56786abd516796e0149763a40e909466bdb', 'justin@themoviesite.com', '2018-02-23 20:44:51', '::1', '2'),
+(27, 'adrian', 'adrian', '4e69e8134bcf30fa87647f890aa27c63ef1a8e05', 'yzhao333@gmail.com', '2018-02-23 21:54:25', '::1', '2');
 
 --
 -- Indexes for dumped tables
@@ -1180,7 +1180,7 @@ ALTER TABLE `tbl_arating`
 -- AUTO_INCREMENT for table `tbl_attempts`
 --
 ALTER TABLE `tbl_attempts`
-  MODIFY `att_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `att_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT for table `tbl_cast`
 --
@@ -1260,4 +1260,4 @@ ALTER TABLE `tbl_urating`
 -- AUTO_INCREMENT for table `tbl_user`
 --
 ALTER TABLE `tbl_user`
-  MODIFY `user_id` mediumint(8) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `user_id` mediumint(8) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;

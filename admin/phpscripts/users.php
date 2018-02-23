@@ -30,9 +30,26 @@ if($userquery){
   mysqli_close($link);
 }
 
+function editUser($fname, $username, $password, $email, $id){
+  include('connect.php');
 
+  $salted = "seasoningadded".$password."abitmore";
+  $hashed = hash('haval160,4',$salted);
 
-//Use phpmailer to send user information to created users
+  $updatestring = "UPDATE tbl_user SET user_fname='{$fname}',user_name='{$username}',user_pass='{$hashed}',user_email='{$email}' WHERE user_id={$id}";
+  //echo $updatestring;
+
+  $updatequery = mysqli_query($link, $updatestring);
+  if($updatequery){
+    redirect_to('admin_index.php');
+  }else{
+    $message = "Guess you got canned...";
+    return $message;
+  }
+  mysqli_close($link);
+}
+
+// Use phpmailer to send user information to created users
 // if($userquery){
 //       $userMsg = "<p>Hey " . $fname . ", welcome aboard! Please find your login information here:" . "</p><br/><li>User Name: " . $username . "</li>" . "<li>Password: " . $password . "</li><br/><p>Plese click <a href='http://localhost/login'>HERE</a> to login.</p>";
 //       //send email
@@ -72,7 +89,18 @@ if($userquery){
 //       mysqli_close($link);
 //   }
 //
-//
+function deleteUser($id){
+  include('connect.php');
+  $delstring = "DELETE FROM tbl_user WHERE user_id = {$id}";
+  $delquery = mysqli_query($link, $delstring);
+  if($delquery){
+    redirect_to("../admin_index.php");
+  }else{
+    $message = "Byr, bye...";
+    return $message;
+  }
+  mysqli_close($link);
+}
 
 
 ?>
