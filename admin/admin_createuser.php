@@ -5,10 +5,6 @@ error_reporting(E_ALL);
   //confirm_logged_in();
 //require_once('phpscripts/connect.php');
 
-
-
-
-
 if(isset($_POST['submit'])){
   $fname = trim($_POST['fname']);
   $username = trim($_POST['username']);
