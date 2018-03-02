@@ -30,6 +30,7 @@ function logIn($username, $password, $ip) {
                 $_SESSION['user_date']= $founduser['user_date'];
                 $setTime = date('Y-m-d H:i:s');
 
+                if($founduser['user_ip'] == "no"){
                 //update login time
 
                 $update = "UPDATE tbl_user SET user_ip='{$ip}', user_date='{$setTime}' WHERE user_id={$id}";
@@ -39,8 +40,17 @@ function logIn($username, $password, $ip) {
                 //zero attempt when successfully logged in
                 $attemptZero = "DELETE * FROM tbl_attempts WHERE att_ip = '{$ip}'";
                 $delResult = mysqli_query($link, $attemptZero);
+                redirect_to("admin_edituser.php");
+              }else{
+                $update = "UPDATE tbl_user SET user_ip='{$ip}', user_date='{$setTime}' WHERE user_id={$id}";
+                $updateQuery = mysqli_query($link, $update);
 
+
+                //zero attempt when successfully logged in
+                $attemptZero = "DELETE * FROM tbl_attempts WHERE att_ip = '{$ip}'";
+                $delResult = mysqli_query($link, $attemptZero);
                 redirect_to("admin_index.php");
+              }
             }else{
                 //counting attempts
                 $ticTok = $att['att_time'] + 1;
@@ -67,13 +77,19 @@ function logIn($username, $password, $ip) {
             $id = $founduser['user_id'];
             $_SESSION['user_id'] = $id;
             $_SESSION['user_name']= $founduser['user_fname'];
+            $setTime = date('Y-m-d H:i:s');
 
             //update login time
-            $setTime = date('Y-m-d H:i:s');
+            if($founduser['user_ip'] == "no"){
+              $update = "UPDATE tbl_user SET user_ip='{$ip}', user_date='{$setTime}' WHERE user_id={$id}";
+              $updateqQuery = mysqli_query($link, $update);
+
+              redirect_to("admin_edituser.php");
+            }else{
             $update = "UPDATE tbl_user SET user_ip='{$ip}', user_date='{$setTime}' WHERE user_id={$id}";
             $updateqQuery = mysqli_query($link, $update);
 
-            redirect_to("admin_index.php");
+            redirect_to("admin_index.php");}
         }else{
             $createAttempt = "INSERT INTO tbl_attempts (att_time, att_ip) VALUES ('1', '{$ip}')";
             $createResult = mysqli_query($link, $createAttempt);
