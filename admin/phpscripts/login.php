@@ -27,9 +27,11 @@ function logIn($username, $password, $ip) {
                 $id = $founduser['user_id'];
                 $_SESSION['user_id'] = $id;
                 $_SESSION['user_name']= $founduser['user_fname'];
+                $_SESSION['user_date']= $founduser['user_date'];
+                $setTime = date('Y-m-d H:i:s');
 
                 //update login time
-                $setTime = date('Y-m-d H:i:s');
+
                 $update = "UPDATE tbl_user SET user_ip='{$ip}', user_date='{$setTime}' WHERE user_id={$id}";
                 $updateQuery = mysqli_query($link, $update);
 

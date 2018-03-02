@@ -1,8 +1,15 @@
 <?php
 require_once('phpscripts/config.php');
-
   //confirm_logged_in();
 require_once('phpscripts/connect.php');
+if(isset($_SESSION['user_id'])){
+$user_id = $_SESSION['user_id'];
+$previousTime = "SELECT user_date FROM tbl_user WHERE user_id = '{$user_id}'";
+$timeToPass = mysqli_query($link, $previousTime);
+$theTime = "";
+if(mysqli_num_rows($timeToPass)){
+  $founduser = mysqli_fetch_array($timeToPass, MYSQLI_ASSOC);
+  $theTime = $_SESSION['user_date'];}}
  ?>
 
  <!DOCTYPE html>
@@ -35,16 +42,7 @@ if ( $currentTime >= "04:00:00" && $currentTime <= "11:00:00" ) {
 
 <div class="loginTime">
   <?php
-  $user_id = $_SESSION['user_id'];
-  $previousTime = "SELECT user_date FROM tbl_user WHERE user_id = '{$user_id}'";
-  $timeToPass = mysqli_query($link, $previousTime);
-  $theTime;
-
-  if(mysqli_num_rows($timeToPass)){
-    $founduser = mysqli_fetch_array($timeToPass, MYSQLI_ASSOC);
-    $theTime = $founduser['user_date'];
-    echo "<p>You were here: " . $theTime. "</p>";
-  }
+  echo "<p>Last time you were here: " . $theTime . "</p>";
   ?>
 </div>
 
