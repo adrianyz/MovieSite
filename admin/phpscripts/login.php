@@ -29,9 +29,16 @@ function logIn($username, $password, $ip) {
                 $_SESSION['user_name']= $founduser['user_fname'];
                 $_SESSION['user_date']= $founduser['user_date'];
                 $setTime = date('Y-m-d H:i:s');
+                $now = time();
+                $then = strtotime($_SESSION['user_date']);
+                $timeDiff = $now - $then;
 
+
+                //new created user's ip = no, it will update after login
                 if($founduser['user_ip'] == "no"){
-                //update login time
+                  if($timeDiff < 259200)
+                  //259200s -> 3 days
+                {//update login time
 
                 $update = "UPDATE tbl_user SET user_ip='{$ip}', user_date='{$setTime}' WHERE user_id={$id}";
                 $updateQuery = mysqli_query($link, $update);
@@ -41,6 +48,11 @@ function logIn($username, $password, $ip) {
                 $attemptZero = "DELETE * FROM tbl_attempts WHERE att_ip = '{$ip}'";
                 $delResult = mysqli_query($link, $attemptZero);
                 redirect_to("admin_edituser.php");
+              }else{
+                $tooLong = "Be quick next time!";
+
+                return $tooLong;
+              }
               }else{
                 $update = "UPDATE tbl_user SET user_ip='{$ip}', user_date='{$setTime}' WHERE user_id={$id}";
                 $updateQuery = mysqli_query($link, $update);
@@ -77,14 +89,32 @@ function logIn($username, $password, $ip) {
             $id = $founduser['user_id'];
             $_SESSION['user_id'] = $id;
             $_SESSION['user_name']= $founduser['user_fname'];
+            $_SESSION['user_date']= $founduser['user_date'];
             $setTime = date('Y-m-d H:i:s');
+            $now = time();
+            $then = strtotime($_SESSION['user_date']);
+            $timeDiff = $now - $then;
 
-            //update login time
+
+            //new created user's ip = no, it will update after login
             if($founduser['user_ip'] == "no"){
-              $update = "UPDATE tbl_user SET user_ip='{$ip}', user_date='{$setTime}' WHERE user_id={$id}";
-              $updateqQuery = mysqli_query($link, $update);
+              if($timeDiff < 259200)
+              //259200s -> 3 days
+            {//update login time
 
-              redirect_to("admin_edituser.php");
+            $update = "UPDATE tbl_user SET user_ip='{$ip}', user_date='{$setTime}' WHERE user_id={$id}";
+            $updateQuery = mysqli_query($link, $update);
+
+
+            //zero attempt when successfully logged in
+            $attemptZero = "DELETE * FROM tbl_attempts WHERE att_ip = '{$ip}'";
+            $delResult = mysqli_query($link, $attemptZero);
+            redirect_to("admin_edituser.php");
+          }else{
+            $tooLong = "Be quick next time!";
+
+            return $tooLong;
+          }
             }else{
             $update = "UPDATE tbl_user SET user_ip='{$ip}', user_date='{$setTime}' WHERE user_id={$id}";
             $updateqQuery = mysqli_query($link, $update);
